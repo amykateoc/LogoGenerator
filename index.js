@@ -1,5 +1,7 @@
 const { Circle, Square, Triangle, Svg } = require("./lib/shapes");
 const inquirer = require("inquirer");
+const fs = require('fs');
+const path = require('path');
 
 async function init() {
     const {text, textColor, shape, shapeColor} = await inquirer.prompt([
@@ -44,6 +46,16 @@ async function init() {
     const svg = new Svg(text, textColor, chosenShape)
     const logo = svg.render()
     console.log(logo)
+    function writeToFile(filename, data) {
+        return fs.writeFileSync('logo.svg', logo);
+     };
+    writeToFile('./examples/logo.svg')
+        console.log("file created")
 }
 
+// function writeToFile(filename, data) {
+//     return fs.writeFileSync('logo.svg', logo);
+//  };
+
 init();
+
