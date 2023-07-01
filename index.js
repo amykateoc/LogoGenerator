@@ -46,16 +46,13 @@ async function init() {
     const svg = new Svg(text, textColor, chosenShape)
     const logo = svg.render()
     console.log(logo)
-    function writeToFile(filename, data) {
-        return fs.writeFileSync('logo.svg', logo);
-     };
-    writeToFile('./examples/logo.svg')
+    writeToFile('./examples/logo.svg', logo)
         console.log("file created")
 }
 
-// function writeToFile(filename, data) {
-//     return fs.writeFileSync('logo.svg', logo);
-//  };
+function writeToFile(filename, data) {
+    return fs.writeFileSync(filename, data);
+ };
 
 init();
 
